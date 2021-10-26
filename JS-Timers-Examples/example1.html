@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript Timers 1</title>
+</head>
+
+<body>
+
+	<p><a href="#" id="stop">Stop the script</a></p>
+	<div id="thediv">Default Content</div>
+	
+	<script>
+		var theDiv = document.getElementById("thediv");
+		var content ="<p>adding another paragraph</p>";
+
+		var timer = setInterval( function(){ theDiv.innerHTML += content; }, 1500 );
+
+		document.getElementById("stop").addEventListener("click", function(){ clearInterval(timer); });
+		
+	</script>
+
+</body>	
+</html>

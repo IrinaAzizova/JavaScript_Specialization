@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- <p>Here is a paragraph</p>
+    <div id="main">
+        <p>text 1</p>
+        <p>Llamas</p>
+        <p>text 3</p>
+        <p>text 4</p>
+    </div> -->
+
+    <nav>
+        <ul>
+            <li><a href="#" id="link1">link one</a></li>
+            <li><a href="#" id="link2">link two</a></li>
+            <li><a href="#" id="link3">link three</a></li>
+            <li><a href="#" id="link4">link four</a></li>
+            <li><a href="#" id="link5">link five</a></li>
+        </ul>
+    </nav>
+    <p id="paralink1">text 1</p>
+    <p id="paralink2">text 2</p>
+    <p id="paralink3">text 3</p>
+    <p id="paralink4">text 4</p>
+    <p id="paralink5">text 5</p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $('a').click(function(){
+            const paraNum = '#para' + $(this).attr('id');
+            $('p').css('color', 'black');
+            $(paraNum).css('color', 'red')
+            console.log(paraNum);
+        });
+
+        
+    </script>
+</body>
+</html>
