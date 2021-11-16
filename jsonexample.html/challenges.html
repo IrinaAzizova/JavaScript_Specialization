@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenges</title>
+</head>
+<body>
+
+    <form id="addpet">
+        <p><label>Name <input type="text" id="name"></label></p>
+        <p><label>Species <input type="text" id="species"></label></p>
+        <p><label>Greeting <input type="text" id="greeting"></label></p>
+        <p><input type="submit" value="add pet"></p>
+    </form>
+    <div>
+        <p id="first"></p>
+        <p id="second">
+            <button id="btn"></button>
+        </p>
+    </div>
+
+
+    <script>
+
+        function Pet (name, species, greeting) {
+            this.name = name;
+            this.species = species;
+            this.greeting = function(){
+                alert(`my ${species} say ${greeting}`);
+            }
+        }
+
+        const form = document.querySelector('#addpet');        
+
+        form.addEventListener('submit', function(event){
+            event.preventDefault();
+
+            const formData = document.querySelectorAll('#addpet input');
+            let count = 0;
+
+            formData.forEach(eachData => {
+                const value = eachData.value;
+                if (value.length === 0) {
+                    count++;
+                }                          
+            }); 
+            if (count > 0) {
+                alert("Fill in the Fields");
+            } 
+            else {
+                const newPet = new Pet(formData[0].value, formData[1].value, formData[2].value);
+                const firstPara = document.querySelector('#first');
+                firstPara.innerHTML = `I have a ${newPet.species} named ${newPet.name}.`;
+                const btn = document.querySelector('#btn');
+                btn.innerHTML = `Click for a greeting from ${newPet.name}`;
+                btn.addEventListener('click', function(event){
+                    event.preventDefault();
+                    newPet.greeting();
+                });
+            }         
+        });
+
+        
+        
+
+
+
+        /* function Pet(name, species, greeting){
+            this.name = name;
+            this.species = species;
+            this.greeting = function(){
+                alert(greeting);
+            }
+        }      
+
+        document.querySelector('#addpet').addEventListener('submit', function(event){
+            event.preventDefault();
+            var formData = event.target.elements;
+            var myPet = new Pet(formData[0].value, formData[1].value, formData[2].value);
+            myPet.greeting(); */
+            
+            /* pet = {
+                name: petName,
+                species: petSpecies,
+                greeting: function(){
+                    console.log(`My ${this.species} named ${this.name} say Woof.`);
+                }
+            }
+            pet.greeting(); 
+        });*/
+
+        /* const pet = {
+            name: "Alice",
+            species: "pet"
+        };
+
+        pet.name = "Ball";
+        pet.species = "dog"; */
+       /*  console.log(`I have a ${pet.species} named ${pet.name}.`); */
+
+        /* pet.qualities = {
+            color: "black",
+            age: 5,
+            size: "small"
+        } */
+        /* console.log(pet); */
+
+        /* pet.qualities.supplies = ["one", "two", "three"]; */
+        /* console.log(`I need to get ${pet.qualities.supplies.length} amount of supples for ${pet.name} at the store.`); */
+
+        /* pet.greeting = function(){
+            console.log(`Come to me, ${this.name}!`);
+        };
+        pet.greeting(); */
+
+
+        /* function Pet(name, species, greeting){
+            this.name = name;
+            this.species = species;
+            this.greeting = function (){
+                console.log(`My ${this.name} say ${greeting}.`);
+            }
+        }
+        var myDog = new Pet("Ball", "dog", "Woof");
+        myDog.greeting();
+        var myCat = new Pet("Alice", "cat", "Meow");
+        myCat.greeting(); */
+
+    </script>
+</body>
+</html>
