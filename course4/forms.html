@@ -6,56 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BasicForms</title>
     <style>
-        input, label {display: block;}
+        /* input, label {display: block;}
         input {margin-bottom: 15px;}
-        fieldset input, fieldset label {display:inline;}
+        fieldset input, fieldset label {display:inline;} */
     </style>
 </head>
 <body>
     <h1>Basics Forms</h1>
     <form action="processor.php" method="post">
 
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="fname" placeholder="Bill" required>
+        <div>
+            <label for="fname">First Name</label> <br>
+            <input type="text" id="fname" name="fname" placeholder="John" required>    
+        </div>
 
-        <label for="favcolor">Favorite color</label>
-        <input type="color" name="favcolor" id="favcolor">
+        <div>
+            <label for="lname">Last Name</label> <br>
+            <input type="text" id="lname" name="lname" placeholder="Doe" required>
+        </div>
 
-        <fieldset>
-            <legend>Do You want spam?</legend>
+        <div>
+            <label for="email">Email Address</label> <br>
+		    <input type="email" name="email" id="email" placeholder="example@gmail.com" required>
+        </div> 
 
-            <input type="radio" name="spam" id="spam-yes" value="yes">
-            <label for="spam-yes">Yes, send me spam!</label>
+        <div>
+            <label for="url">Website</label> <br>
+            <input id="url" name="url" type="url" placeholder="example.com" checked>
+        </div>
 
-            <input type="radio" name="spam" id="spam-no" value="no" checked>
-            <label for="spam-no">No, don't send me spam!</label>
-        </fieldset>
+        <div>
+            <label for="favcolor">Favorite color</label>
+            <input type="color" name="favcolor" id="favcolor">
+        </div>   
+        
+        <div>
+            <fieldset>
+                <legend>Do You want spam?</legend>
+    
+                <input type="radio" name="spam" id="spam-yes" value="yes">
+                <label for="spam-yes">Yes, send me spam!</label>
+    
+                <input type="radio" name="spam" id="spam-no" value="no" checked>
+                <label for="spam-no">No, don't send me spam!</label>
+            </fieldset>
+        </div>
+        
+        <div>
+            <fieldset>
+                <legend>Favorite Animals?</legend>
+    
+                <input type="checkbox" name="animal[]" id="cat" value="Cat">
+                <label for="cat">Cat</label>
+    
+                <input type="checkbox" name="animal[]" id="dog" value="Dog">
+                <label for="dog">Dog</label>
+    
+                <input type="checkbox" name="animal[]" id="llama" value="Llama" checked>
+                <label for="llama">Llama</label>
+            </fieldset>
+        </div>
+        
+        <div>
+            <label for="cheese">Select Favorite Cheese</label>
+            <select name="cheese" id="cheese">
+                <option selected>-----</option>
+                <option value="American">American</option>
+                <option value="Swiss">Swiss</option>
+                <option value="Brie">Brie</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="comments">Comments?</label>
+            <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Your comments" required></textarea>
+        </div>
 
-        <fieldset>
-            <legend>Favorite Animals?</legend>
+        <div><input type="submit" name="send" value="Send it!"></div>
 
-            <input type="checkbox" name="animal[]" id="cat" value="Cat">
-            <label for="cat">Cat</label>
-
-            <input type="checkbox" name="animal[]" id="dog" value="Dog">
-            <label for="dog">Dog</label>
-
-            <input type="checkbox" name="animal[]" id="llama" value="Llama" checked>
-            <label for="llama">Llama</label>
-        </fieldset>
-
-        <label for="cheese">Select Favorite Cheese</label>
-        <select name="cheese" id="cheese">
-            <option selected>-----</option>
-            <option value="American">American</option>
-            <option value="Swiss">Swiss</option>
-            <option value="Brie">Brie</option>
-        </select>
-
-        <label for="comments">Comments?</label>
-        <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Your comments"></textarea>
-
-        <input type="submit" name="send" value="Send it!">
+        
+        
     </form>    
 </body>
 </html>
