@@ -1,4 +1,4 @@
-/*********** Creating the seats ***********/
+/*__________ Creating the seats _________*/
 
 function makeRows(sectionLength, rowLength, placement) {
     const rows = [
@@ -34,7 +34,10 @@ makeRows(3, 15, 'right');
 makeRows(9, 15, 'middle');
 
 
-/*********** mock database ***********/  
+
+
+
+/*_________ database imitation __________*/  
 var reservedSeats = {
 	record1: {
 		seat: "b19",
@@ -65,3 +68,22 @@ var reservedSeats = {
 		}
 	}
 };
+
+
+
+
+
+/*_________ Making the reserved seats __________*/
+
+(function(){
+    'use strict';
+
+    for (const key in reservedSeats) {
+        if ( reservedSeats.hasOwnProperty(key)) {
+            const obj = reservedSeats[key].seat;
+            const resSeat = document.getElementById(`${obj}`);
+            resSeat.className = 'r';
+            resSeat.innerHTML = 'R';
+        }
+    }
+}());
