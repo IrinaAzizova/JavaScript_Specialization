@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow functions</title>
+</head>
+<body>
+    <script>
+        const makeUpperCase = (aString) => aString.toUpperCase();
+        console.log(makeUpperCase("here is a string"));
+
+
+        const fullName = (fname, lname) => `${fname} ${lname}`;
+        console.log(fullName('Irina', 'Azizova'));
+
+
+        const fullName2 = () => {
+            const fname = 'Irina';
+            const lname = 'Azizova';
+            return `${fname} ${lname}`;
+        }
+        console.log(fullName2());
+
+
+        const fruit = ['banana', 'apple', 'lemon', 'kiwi'];
+        const upperFruit = [];
+        fruit.forEach( thisFruit => {
+            upperFruit.push(thisFruit.toUpperCase());
+        });
+        alert(upperFruit);
+
+    </script>
+</body>
+</html>
