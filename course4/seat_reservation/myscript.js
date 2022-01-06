@@ -1,3 +1,4 @@
+
 /*__________ Creating the seats _________*/
 
 function makeRows(sectionLength, rowLength, placement) {
@@ -38,6 +39,7 @@ makeRows(9, 15, 'middle');
 
 
 /*_________ database imitation __________*/  
+
 var reservedSeats = {
 	record1: {
 		seat: "b19",
@@ -87,3 +89,35 @@ var reservedSeats = {
         }
     }
 }());
+
+
+
+
+
+/*__________ Selecting seats __________*/
+
+(function(){
+    'use strict';
+
+    const selectedSeats = []; //array for selecting seats
+    const seats = document.querySelectorAll('.a')
+
+    seats.forEach( seat => {
+        seat.addEventListener('click', () => {            
+            switch (seat.className) {
+                case 'a': 
+                    selectedSeats.push(seat.id);
+                    seat.className = 's';
+                    break;
+                case 's': 
+                    const seatArrayIndex = selectedSeats.indexOf(seat.id);
+                    selectedSeats.splice(seatArrayIndex, 1);
+                    seat.className = 'a';
+                    break;
+            }   
+            console.log(selectedSeats);     
+        });  
+          
+    });
+}())
+
