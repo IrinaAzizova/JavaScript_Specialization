@@ -75,11 +75,16 @@ var reservedSeats = {
 
 
 
+
 /*_________ Making the reserved seats __________*/
 
 (function(){
     'use strict';
+    
+    resSeats();
+}());
 
+function resSeats() {
     for (const key in reservedSeats) {
         if ( reservedSeats.hasOwnProperty(key)) {
             const obj = reservedSeats[key].seat;
@@ -88,7 +93,7 @@ var reservedSeats = {
             resSeat.innerHTML = 'R';
         }
     }
-}());
+}
 
 
 
@@ -99,7 +104,7 @@ var reservedSeats = {
 (function(){
     'use strict';
 
-    const selectedSeats = []; //array for selecting seats
+    let selectedSeats = []; //array for selecting seats
     const seats = document.querySelectorAll('.a')
 
     seats.forEach( seat => {
@@ -122,7 +127,7 @@ var reservedSeats = {
     });
 
 
-    /*________ Reservation Form __________*/
+    /*________ Open and Close Form Event Handlers __________*/
 
     document.querySelector('#reserve').addEventListener('click', event => {
         event.preventDefault();
@@ -140,12 +145,12 @@ var reservedSeats = {
         selectedstring = selectedstring.replace(/,/g, ', ');
         selectedstring = selectedstring.replace(/,(?=[^,]*$)/, ' and');
         if (selectedSeats.length > 0) {
+            document.querySelector('#confirmers').style.display = "block";
             if (selectedSeats.length === 1) {
                 document.querySelector('#selectedseats').innerHTML = `You have selected ${selectedSeats[0]} seat`;
             }
             else {
                 document.querySelector('#selectedseats').innerHTML = `You have selected ${selectedstring} seats`;
-                document.querySelector('#confirmers').style.display = "block";
             }
             
         }
@@ -160,4 +165,41 @@ var reservedSeats = {
     }
 
     manageConfirmForm()
+
+
+
+
+    /*__________ Reservation Form __________*/
+
+    document.querySelector('#confirmers').addEventListener('submit', event => {
+        event.preventDefault();
+        const formData = event.target.elements;
+        let firstName = formData[0].value;
+        let lastName = formData[1].value;
+        processReservation(firstName, lastName, selectedSeats);
+        resSeats();
+        selectedSeats = [];
+    });
+    
+    function processReservation(fname, lname, seats) {
+        seats.forEach( eachSeat => {
+            let reservationNumber =  `record${Object.keys(reservedSeats).length + 1}`;
+            reservedSeats[reservationNumber] = {
+                seat: eachSeat,
+                owner: {
+                    fname: fname,
+                    lname: lname,
+                }
+            }
+            console.log(reservedSeats);
+            document.querySelector('#confirmers').style.display = "none";
+            document.querySelector('#selectedseats').innerHTML = 'Seats Reserved';
+        }); 
+    } 
 }());
+
+
+
+
+
+
