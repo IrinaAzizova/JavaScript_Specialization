@@ -119,5 +119,16 @@ var reservedSeats = {
         });  
           
     });
-}())
+
+    /*________ Reservation Button __________*/
+
+    document.querySelector('#reserve').addEventListener('click', event => {
+        event.preventDefault();
+        document.querySelector('#resform').style.display = "block";
+    });
+    document.querySelector('#cancel').addEventListener('click', event => {
+        event.preventDefault();
+        document.querySelector('#resform').style.display = "none";
+    });
+}());
 
