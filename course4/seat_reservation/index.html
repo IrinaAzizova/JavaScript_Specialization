@@ -22,7 +22,19 @@
 
 	<section id="resform">
 		<h2>Complete This Form To Confirm Your Reservstion</h2>
-		<p>Or <a href="#" id="cancel">Cancel</a> and choose different seats</p>
+		<p id="selectedseats">You have selected x seats</p>
+
+		<form id="confirmers">
+			<label for="fname">First Name</label>
+			<input type="text" id="fname" name="fname" placeholder="Type Your First Name" required>
+
+			<label for="lname">Last Name</label>
+			<input type="text" id="lname" name="lname" placeholder="Type Your Last Name" required>
+
+			<input type="submit" name="send" id="confirmbtn" value="Confirm Reservation">
+		<p>Or <a href="#" id="cancel">Cancel</a> and choose different seats</p>	
+		</form>
+		
 	</section>
 
 	<script src="myscript.js"></script>

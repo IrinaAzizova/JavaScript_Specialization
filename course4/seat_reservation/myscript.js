@@ -114,21 +114,50 @@ var reservedSeats = {
                     selectedSeats.splice(seatArrayIndex, 1);
                     seat.className = 'a';
                     break;
-            }   
+            }
+            document.querySelector('#selectedseats').innerHTML = `You have selected ${selectedSeats.length} seats <br> Click "Reserve Seats" button`; 
             console.log(selectedSeats);     
         });  
           
     });
 
-    /*________ Reservation Button __________*/
+
+    /*________ Reservation Form __________*/
 
     document.querySelector('#reserve').addEventListener('click', event => {
         event.preventDefault();
         document.querySelector('#resform').style.display = "block";
+        manageConfirmForm()
     });
     document.querySelector('#cancel').addEventListener('click', event => {
         event.preventDefault();
         document.querySelector('#resform').style.display = "none";
     });
-}());
 
+
+    function manageConfirmForm() {
+        let selectedstring = selectedSeats.toString();
+        selectedstring = selectedstring.replace(/,/g, ', ');
+        selectedstring = selectedstring.replace(/,(?=[^,]*$)/, ' and');
+        if (selectedSeats.length > 0) {
+            if (selectedSeats.length === 1) {
+                document.querySelector('#selectedseats').innerHTML = `You have selected ${selectedSeats[0]} seat`;
+            }
+            else {
+                document.querySelector('#selectedseats').innerHTML = `You have selected ${selectedstring} seats`;
+                document.querySelector('#confirmers').style.display = "block";
+            }
+            
+        }
+        else {
+            document.querySelector('#selectedseats').innerHTML = 'You need to select some seats to reserve.<br><a href="#" id="error">Close</a> this dialog box and pick at least one seat.'
+            document.querySelector('#confirmers').style.display = "none";
+            document.querySelector('#error').addEventListener('click', event => {
+                event.preventDefault();
+                document.querySelector('#resform').style.display = "none";                
+            })
+        }
+    }
+
+    manageConfirmForm()
+}());
