@@ -169,7 +169,7 @@ function resSeats() {
 
 
 
-    /*__________ Reservation Form __________*/
+    /*__________ Adding reserved seats to object__________*/
 
     document.querySelector('#confirmers').addEventListener('submit', event => {
         event.preventDefault();
@@ -181,6 +181,9 @@ function resSeats() {
         selectedSeats = [];
     });
     
+
+
+    /*__________ Creating seat object __________*/
     function processReservation(fname, lname, seats) {
         seats.forEach( eachSeat => {
             let reservationNumber =  `record${Object.keys(reservedSeats).length + 1}`;
@@ -191,7 +194,6 @@ function resSeats() {
                     lname: lname,
                 }
             }
-            console.log(reservedSeats);
             document.querySelector('#confirmers').style.display = "none";
             document.querySelector('#selectedseats').innerHTML = 'Seats Reserved';
         }); 
