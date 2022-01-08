@@ -31,8 +31,13 @@
 
         $('#loaddata').click(function () {
 
-            // Add jQuery code here...
-
+            $('#remotedata').html('<img src="images/spinner.gif">');
+            $.ajax({
+                url: 'https://cpe-web-assignments.ucdavis.edu/remotedata/index.php',
+                cache: false
+            }).done((data) => {
+                $('#remotedata').html(data);
+            });
         });
 
         let color = "white";
