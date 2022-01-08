@@ -29,7 +29,14 @@
         document.getElementById('loaddata').addEventListener('click', getData);
         // Asynchronously getting data from the file...
         function getData() {
-            // Add Fetch Promise code here...
+            document.getElementById('remotedata').innerHTML = '<img src="images/spinner.gif">';
+            const fetchPromise = fetch('https://cpe-web-assignments.ucdavis.edu/remotedata/index.php');
+            //console.log(fetchPromise);
+            fetchPromise.then( response => {
+                response.text().then( text => {
+                    document.getElementById('remotedata').innerHTML = text;
+                });
+            });
         }
 
         // Handling buttons
