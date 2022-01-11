@@ -1,4 +1,23 @@
-// add script here
+const formDataUrl = 'https://cpe-web-assignments.ucdavis.edu/formprocessing/processor.php';
+$('#formdata').load(formDataUrl);
+
+$('#myForm').validate(); //simple validator
+$('#myForm').submit( event => {
+	event.preventDefault();
+	if ($('#myForm').valid() == true) {
+		const dataString = $( this ).serialize();
+		console.log(dataString);
+		$.ajax({
+			type: 'POST',
+			url: formDataUrl,
+			data: dataString,
+			success: data => {
+				$('formData').html(data);
+				$('myForm').clearForm();
+			}
+		});
+	}
+});
 
 
 $.fn.clearForm = function () {

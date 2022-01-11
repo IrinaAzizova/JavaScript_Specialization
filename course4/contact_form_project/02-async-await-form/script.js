@@ -52,7 +52,17 @@
 	}
 
 	async function sendData() {
-		// send data and get response...
+		const data = new FormData(contactForm);
+		const fetchPromise = await fetch(formProcessorUrl, {
+			method: 'POST',
+			body: data
+		});
+		const content = await fetchPromise.text();
+		document.getElementById('formdata').innerHTML = content;
+		const fields = document.querySelectorAll('.data');
+		fields.forEach (eachField => {
+			eachField.value = '';
+		});
 	}
 
 }());
