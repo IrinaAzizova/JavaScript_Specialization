@@ -3,6 +3,10 @@ h1, h2, h3, p, ul, li {
     padding:0;
 }
 
+nav ul, nav ol {
+    list-style-type: none;
+}
+
 /********** End Bill's Reset ***********/
 
 body {
@@ -41,6 +45,11 @@ header img {
     max-width: 75%;
 }
 
+nav {
+    padding: 20px;
+    text-align: center;
+}
+
 main {
     padding: 20px;
 }
@@ -57,6 +66,25 @@ strong {
     font-weight: 500;
 }
 
+#mainnav ul {
+    border-top: 2px solid #b21f1f;
+}
+
+#mainnav ul li a {
+    display: block;
+    text-decoration: none;
+    background-color: darkred;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 2px solid #b21f1f;
+    padding: 10px;
+}
+
+#mainnav ul li a:hover {
+    opacity: 0.5;
+}
+
 @media only screen and (min-width: 600px) {
     main {
         display: grid;
@@ -67,6 +95,21 @@ strong {
     article {
         margin-bottom: 0;
     }
+
+    #mainnav ul {
+        display: flex;
+        border-top: none;
+    }
+    #mainnav ul li {
+        flex: 1
+    }
+    #mainnav ul li a {
+        border-bottom: none;
+        border-right: 2px solid #b21f1f;
+    }
+    #mainnav ul li:last-of-type a {
+        border-right: none;
+    }
 }
 
 @media only screen and (min-width: 900px) {
@@ -75,9 +118,4 @@ strong {
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 20px;
     }
-}
-
-nav {
-    padding: 20px;
-    text-align: center;
 }
